@@ -7,7 +7,7 @@ const PropEstimate = () => {
     <div className='propestimatewrap'>
         <div className='body-container'>
         <div className='title py-8'>
-        <h2 className='text-3xl font-bold text-center'>PropEstimate</h2>
+        <h2 className='md:text-3xl font-bold text-center'>PropEstimate</h2>
         <div className="grid grid-cols-2 gap-10">
           <div class="w-full p-6 bg-[#F8B6F180] relative border mt-6 border-[#F8B6F180] rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
           <div className='border-top absolute top-0 bg-[#f8b6f1] h-2.5 curved w-full -left-0 rounded-xl '></div>
