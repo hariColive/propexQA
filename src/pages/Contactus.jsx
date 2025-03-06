@@ -27,29 +27,29 @@ const Contact = () => {
   };
 
   return (
-    <div className="mt-[53px] sm:mt-[68px] ">
+    <div className="mt-[68px] ">
       <div className="HeroSection flex flex-col justify-center items-center h-[330px] bg-cover bg-[url('/images/contactus/contactusBanner.webp')]" >
-            <h1 className="text-white sm:text-[40px] text-[24px] font-semibold  mb-2">Contact Us</h1>
-            <p className="text-white sm:text-[24px] text-[16px] font-normal">Our Experts are here to help you</p>
+            <h1 className="text-white text-[40px]  font-semibold  mb-2">Contact Us</h1>
+            <p className="text-white text-[24px] font-normal">Our Experts are here to help you</p>
         </div>
-        <div className="grid sm:grid-cols-2 grid-cols-1">
-          <div className="bg-[#F4F4F4] py-10 px-5 sm:px-10">
-            <div className="grid sm:grid-cols-3 grid-cols-1  justify-center items-center gap-7">
+        <div className="grid grid-cols-2">
+          <div className="bg-[#F4F4F4] py-10 px-10">
+            <div className="grid grid-cols-3 justify-center items-center gap-7">
               <a href="https://api.whatsapp.com/send/?phone=918185800800&amp;text=Hi+PropEx%21+I%27m+looking+for+a+property&amp;type=phone_number&amp;app_absent=0" target='_blank'>
-                <div className="flex sm:flex-col flex-row justify-center items-center h-[56px] sm:h-[106px] w-full bg-white border border-[#DADADA] rounded-[8px]">
-                  <img src={whatsapp} className="w-[20px] sm:w-[35px] mb-2" ></img>
+                <div className="flex flex-col justify-center items-center h-[106px] w-full bg-white border border-[#DADADA] rounded-[8px]">
+                  <img src={whatsapp} className="w-[35px] mb-2" ></img>
                   <label className="text-[#555555] text-[16px] cursor-pointer">Whatsapp</label>
                 </div>
               </a>
               <a href="tel:+91 8185800800">
-                <div className="flex sm:flex-col flex-row justify-center items-center h-[56px] sm:h-[106px] w-full bg-white border border-[#DADADA] rounded-[8px]">
-                  <img src={telephone} className="w-[20px] sm:w-[35px] mb-2" ></img>
+                <div className="flex flex-col justify-center items-center h-[106px] w-full bg-white border border-[#DADADA] rounded-[8px]">
+                  <img src={telephone} className="w-[35px] mb-2" ></img>
                   <label className="text-[#555555] text-[16px] cursor-pointer">+91 8185800800</label>
                 </div>
               </a>
               <a href="mailto:projects@propex.ai">
-                <div className="flex sm:flex-col flex-row justify-center items-center h-[56px] sm:h-[106px] w-full bg-white border border-[#DADADA] rounded-[8px]">
-                  <img src={email} className="w-[20px] sm:w-[35px] mb-2" ></img>
+                <div className="flex flex-col justify-center items-center h-[106px] w-full bg-white border border-[#DADADA] rounded-[8px]">
+                  <img src={email} className="w-[35px] mb-2" ></img>
                   <label className="text-[#555555] text-[16px] cursor-pointer">projects@propex.ai</label>
                 </div>
               </a>
