@@ -28,7 +28,7 @@ const Contact = () => {
 
   return (
     <div className="mt-[68px] ">
-      <div className="HeroSection flex flex-col justify-center items-center h-[330px] bg-cover bg-[url('/images/contactus/contactusBanner.webp')]" >
+      <div className="HeroSection flex flex-col justify-center items-center h-[330px] bg-cover bg-[url('/images/contactus/contactusBanner.png')]" >
             <h1 className="text-white text-[40px]  font-semibold  mb-2">Contact Us</h1>
             <p className="text-white text-[24px] font-normal">Our Experts are here to help you</p>
         </div>
