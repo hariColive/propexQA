@@ -2,7 +2,13 @@ import { FaFacebook, FaLinkedin, FaInstagramSquare, FaYoutube  } from "react-ico
 export const sections = [
     {
       title:'COMPANY',
-      items: ['Blogs','Contact Us','FAQ','Privacy & Policy','Terms & Conditions']
+      items: [
+        { name: "Blogs", link: "/blogs" },
+        { name: "Contact Us", link: "/contactus" },
+        { name: "FAQ", link: "/faq" },
+        { name: "Privacy & Policy", link: "/privacypolicy" },
+        { name: "Terms & Conditions", link: "/termsandconditions" }
+      ]
     },
     {
       title:'NETWORK SITES',

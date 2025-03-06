@@ -6,7 +6,7 @@ import {items} from '../../data/footer';
 const Footer = () => {
   return (
     <>
-        <div className='w-full mt-24 bg-black text-white py-y px-2'>           
+        <div className='w-full bg-black text-white py-y px-2'>           
             <div class="grid sm:grid-cols-12 gap-5 w-[calc(100%-100px)] mx-auto">
             <div className='sm:col-span-4'>
             <div class="aboutus">
@@ -34,7 +34,7 @@ const Footer = () => {
                           section.items.map((item, i)=>{
                             return(
                             <li key={i} className='py-1'>
-                                  {item}
+                              <a href={item.link}>{item.name}</a>  
                             </li>
                             )
                           })
