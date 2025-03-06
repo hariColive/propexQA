@@ -12,11 +12,22 @@ export const sections = [
     },
     {
       title:'NETWORK SITES',
-      items: ['PropExpert','PropGPT','PropEstimate','PropVerse']
+      items: [
+        {name: "PropExpert", link:"/"},
+        {name: "PropGPT", link:"/"},
+        {name: "PropEstimate", link:"/"},
+        {name: "PropVerse", link:"/"}
+      ]
     },
     {
       title:'SOLUTIONS',
-      items: ['i-Connect','i-Meet','i-Visit','BPS Score','NPS Score']
+      items: [
+        {name:"i-Connect", link:"/"},
+        {name:"i-Meet", link:"/"},
+        {name:"i-Visit", link:"/"},
+        {name:"BPS Score", link:"/"},
+        {name:"NPS Score", link:"/"}
+      ]
     },
   ]
   
