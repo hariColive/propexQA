@@ -17,7 +17,7 @@ const Contact = () => {
   const submitEnquireForm = async(data)=>{
     console.log(data);
     try {
-      const response = await axios.post("https://api.colive.com/qa/CRMapi/PropertyCRM/LandingPageLeadInsert", data, {
+      const response = await axios.post("https://api.colive.com/web/qa/CRMapi/PropertyCRM/LandingPageLeadInsert", data, {
         headers: { "Content-Type": "application/json" },
       });
 
