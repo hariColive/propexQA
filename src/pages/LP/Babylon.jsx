@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import EnquireFormModal from '../../components/EnquireFormModal';
+import LPEnquireFormModal from './LPEnquireFormModal';
 import "../LP/lp.css"
 
 const Babylon = () => {
@@ -221,7 +221,7 @@ const Babylon = () => {
             <button className='text-white text-[18px] md:text-[25px] font-semibold bg-[#EF1284] px-8 md:px-10 py-2.5 md:py-3 rounded-[6px] mt-5 cursor-pointer' onClick={()=>setIsModalOpen(true)}>Invest Now</button>
         </div>
         <div>
-            <EnquireFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} leadSource="Propex Babylon" LPId={78} mobNumValidate={false} otpVerify={false}  />
+            <LPEnquireFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} leadSource="Propex Babylon" LPId={78} mobNumValidate={false} otpVerify={false}  />
         </div>  
     </div>
   )

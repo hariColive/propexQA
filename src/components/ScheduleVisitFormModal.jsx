@@ -2,20 +2,59 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 import { useState, useEffect} from 'react';
 import axios from 'axios';
+import DatePicker from 'react-date-picker';
+import 'react-date-picker/dist/DatePicker.css';
+import 'react-calendar/dist/Calendar.css';
 
-const EnquireFormModal = ({ isOpen, onClose, leadSource, LPId, mobNumValidate, otpVerify }) => {
+const ScheduleVisitFormModal = ({ isOpen, onClose, leadSource, LPId, mobNumValidate, otpVerify }) => {
   const {register,handleSubmit,reset,formState: { errors, isSubmitting }} = useForm();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [responseMessage, setResponseMessage] = useState("");
   const [selected,setSelected] = useState("Locality");
   const dropdownOptions = ["AECS Layout","Bellandur","Bommanahalli","BTM Layout","CV Raman Nagar","Doddanekundi","Electronic City","Hebbal","HSR Layout","JP Nagar","Koramangala","Mahadevapura","Manyata Tech Park","Marathahalli","Mysore Road",
                            "Nagawara","Outer Ring Road","Sarjapura Road","Silk Board","Whitefield","ITPL","Kundalahalli","Munnekolala","Spice Garden","Kadubeesanahalli","HAL Road","KR Puram","Horamavu","Hennur","Yeshwanthpur","Yelahanka","Others"]
+  
+  const [date, setDate] = useState(new Date());
+  const [timeSlots,setTimeSlots] = useState([]);
+
+  const scheduleVisitTimeslots = async(newDate)=>{
+      setDate(newDate);
+      setTimeSlots([]);
+
+      const formattedDate = date.toLocaleDateString('en-GB', {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric',
+      }).replace(/ /g, '-');
+
+      let input = {Date: formattedDate}
+      console.log("input",input)
+      try {
+        const response = await axios.post("https://api.propex.ai/web/qa/CRMapi/PropertyCRM/GetScheduleVisitDays",input,{
+          headers: { "Content-Type": "application/json" },
+        });
+        let responseData = response.data;
+        if (responseData?.Status === "success") {
+          setTimeSlots(responseData?.Data || []);
+        } else {
+          setResponseMessage(response.data.Message);
+        }
+      } catch (error) {
+        setResponseMessage("Error:", error.message);
+        //setResponseMessage("Failed to submit the form.");
+        //console.log('Error Status: ' + response.data.Status + 'Error Message: ' + response.data.Message + 'Error Data: ' + response.data.Data);
+      }
+    }
+
+    useEffect(() => {
+      scheduleVisitTimeslots(date);
+    },[date])
 
   const handleChange =(e)=>{
     setSelected(e.target.value)
   }
 
-  const submitEnquireForm = async(data)=>{
+  const submitScheduleVisitForm = async(data)=>{
     setIsSubmitted(true);
     try {
       const response = await axios.post("https://api.propex.ai/web/qa/CRMapi/PropertyCRM/LandingPageLeadInsert", data, {
@@ -42,6 +81,22 @@ const EnquireFormModal = ({ isOpen, onClose, leadSource, LPId, mobNumValidate, o
     if (!isOpen) return null; // If modal is closed, return nothing
   
     return (
+      <>
+      <style>
+        {`
+          .react-date-picker__wrapper{
+            border: none;
+          }
+          .react-date-picker__inputGroup__input{
+            appearance: none;
+            cursor: pointer;
+            pointer-events: none;
+          } 
+          .react-date-picker__clear-button, .react-date-picker__calendar-button{
+            display: none;
+          }
+        `}
+      </style>
       <div className="fixed inset-0 flex items-center justify-center bg-[#0000007d] bg-opacity-50" onClick={onClose}>
         <div className="bg-white rounded shadow-lg w-full max-w-[90%] md:max-w-[30%] relative" onClick={(e)=>e.stopPropagation()}>
           <div className="flex justify-between items-center px-6 py-3 pb-0">
@@ -52,7 +107,7 @@ const EnquireFormModal = ({ isOpen, onClose, leadSource, LPId, mobNumValidate, o
           </div>
           <div className='px-6 pb-6'>
           {!isSubmitted ? (
-            <form onSubmit={handleSubmit(submitEnquireForm)} noValidate>
+            <form onSubmit={handleSubmit(submitScheduleVisitForm)} noValidate>
               <div className="relative mb-3 md:mb-4 mt-4">
                 <input className="w-full border-b-[2px] border-[#F8049C] text-[#616161] px-4 md:px-3 text-[15px] md:text-[18px] mt-1 md:mt-1.5 font-normal outline-none" type='text' placeholder='Full name*' name='fname' id='fname' onInput={(e) => e.target.value = e.target.value.replace(/^\s+/, '') }
                 {...register("fname", { 
@@ -98,12 +153,33 @@ const EnquireFormModal = ({ isOpen, onClose, leadSource, LPId, mobNumValidate, o
                 </select>
                 {errors.locality && <p className="text-red-500 absolute bottom-[-18px] right-0 text-[12px] md:text-[13px]">{errors.locality.message}</p>}
               </div>
-              <div className="relative mb-6 md:mb-6">
-                <input className="w-full border-b-[2px] border-[#F8049C] text-[#616161] px-4 md:px-3 text-[15px] md:text-base mt-1 md:mt-1.5 font-normal pl-4 outline-none" type='number' maxLength={10} placeholder='Budget*' name='budget' id='budget' onInput={(e) => e.target.value = e.target.value.replace(/[^0-9]/g, '')} 
-                {...register("budget", 
-                { required: "Please enter your budget",
-                  })}/>
-                {errors.budget && <p className="text-red-500 absolute bottom-[-18px] right-0 text-[12px] md:text-[13px]">{errors.budget.message}</p>}
+              <div className="mb-6 md:mb-6 grid grid-cols-2 gap-10">
+                <div className='relative border-b-[2px] border-[#F8049C]'>
+                  <DatePicker className='text-[#616161] px-4 md:px-2 text-[15px] md:text-base mt-1 md:mt-1.5 font-normal outline-none cursor-pointer'
+                    onChange={scheduleVisitTimeslots}
+                    value={date}
+                    format="dd-MMM-y"
+                  />
+                  {/* <input className="w-full border-b-[2px] border-[#F8049C] text-[#616161] px-4 md:px-3 text-[15px] md:text-base mt-1 md:mt-1.5 font-normal pl-15 outline-none" type='text' placeholder='Choose Date' name='scheduleDate' id='scheduleDate'
+                  {...register("scheduleDate", 
+                  { required: "Please select Date",
+                    })}/>
+                  {errors.scheduleDate && <p className="text-red-500 absolute bottom-[-18px] right-0 text-[12px] md:text-[13px]">{errors.scheduleDate.message}</p>} */}
+                </div>
+                <div className='relative border-b-[2px] border-[#F8049C]'>
+                  <select className="w-full text-[#616161] px-4 md:px-3 text-[15px] md:text-base mt-1 md:mt-1.5 font-normal pl-4 outline-none" type='text' placeholder='Choose Time' name='slVisitSlots' id='slVisitSlots'
+                    {...register("slVisitSlots", 
+                    { required: "Please select Time slot",
+                      })}>
+                        <option value="" hidden>Choose Time</option>
+                        {timeSlots.map((timeslots, index) => (
+                          <option key={index} value={timeslots.TimeId}>
+                            {timeslots.TimeString}
+                          </option>
+                      ))}
+                  </select>
+                  {errors.slVisitSlots && <p className="text-red-500 absolute bottom-[-18px] right-0 text-[12px] md:text-[13px]">{errors.slVisitSlots.message}</p>}
+                </div>
               </div>
               <div>
                 <button className="text-white font-normal text-[18px] md:text-[20px] border border-[#F31175] rounded-[5px] w-[110px] h-[40px] md:h-[42px] bg-[#F31175] cursor-pointer">Submit</button>
@@ -122,7 +198,8 @@ const EnquireFormModal = ({ isOpen, onClose, leadSource, LPId, mobNumValidate, o
           </div>
         </div>
       </div>
+      </>
     );
   };
 
-export default EnquireFormModal
+export default ScheduleVisitFormModal
