@@ -11,12 +11,14 @@ import PropertyExchange from '../components/Index/PropertyExchange'
 import MobileApps from '../components/Index/MobileApps'
 import Partners from '../components/Index/Partners'
 import FAQSection from '../components/Index/FAQSection'
+import PropertyExchangeTable from '../components/Index/PropertyExchangeTable'
 
 const Home = () => {
   return (
     <div>
       <Herosection />
       <br /><br /><br/><br/>
+      <PropertyExchangeTable/>
       <PropGPT />
       <IProcess />
       <PropEstimate />
