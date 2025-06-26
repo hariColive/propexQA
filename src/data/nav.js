@@ -1,7 +1,7 @@
 export const NavBarMenu = [
     {
         id: 1,
-        link: '/',
+        link: '/properties',
         title: 'Buy To Let',
     },
     {

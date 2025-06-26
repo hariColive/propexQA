@@ -42,8 +42,8 @@ const EnquireFormModal = ({ isOpen, onClose, leadSource, LPId, mobNumValidate, o
     if (!isOpen) return null; // If modal is closed, return nothing
   
     return (
-      <div className="fixed inset-0 flex items-center justify-center bg-[#0000007d] bg-opacity-50" onClick={onClose}>
-        <div className="bg-white rounded shadow-lg w-full max-w-[90%] md:max-w-[30%] relative" onClick={(e)=>e.stopPropagation()}>
+      <div className="fixed inset-0 flex items-center justify-center bg-[#0000007d] bg-opacity-50 z-10" onClick={onClose}>
+        <div className="bg-white rounded shadow-lg w-full max-w-[40%] md:max-w-[30%] relative" onClick={(e)=>e.stopPropagation()}>
           <div className="flex justify-between items-center px-6 py-3 pb-0">
             <button className="text-gray-700 hover:text-gray-800 cursor-pointer absolute right-3 top-3 text-[18px]" onClick={onClose}>
               ✖

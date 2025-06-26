@@ -3,10 +3,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from '../components/Layout';
 import Home from '../pages/Home';
 import Contactus from '../pages/Contactus';
+import Signup  from '../components/Common/Signup';
+import Login from '../components/Common/Login';
+import OtpVerification from '../components/Common/OtpVerification';
+import Properties from '../components/Property/PropertyList';
 import Babylon from './LP/Babylon';
 import Privacypolicy from '../pages/Privacypolicy';
 import TermsAndConditions from './Termsandconditions';
-
+import Oxygen from './LP/Oxygen';
 const Pageroute = () => {
   return (
     <>
@@ -16,9 +20,14 @@ const Pageroute = () => {
       <Route path="/" element={<Layout  />}>
         <Route index element={<Home />} />
         <Route path="/Contactus" element={<Contactus />} />
-        <Route path="/babylon" element={<Babylon />} />
-        <Route path="/privacypolicy" element={<Privacypolicy />} />
-        <Route path="/termsandconditions" element={<TermsAndConditions/>} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/otp" element={<OtpVerification />} />
+        <Route path="/Properties" element={<Properties />} />
+        <Route path="/Babylon" element={<Babylon />} />
+        <Route path="/Oxygen" element={<Oxygen />} />   
+        <Route path="/Privacypolicy" element={<Privacypolicy />} />
+        <Route path="/TermsAndConditions" element={<TermsAndConditions />} />
       </Route>
     </Routes>
   </Router>

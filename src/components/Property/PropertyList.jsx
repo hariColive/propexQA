@@ -4,18 +4,22 @@ import axios from "axios";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import "./PropertyList.css";
 import AccordionFilter from "./AccordionFilter";
 import configs from '../../Utils/configs'
 import { Link } from 'react-router-dom'
 import { postAPICall } from "../../Utils/Network";
-import Properties from "../Property1/Properties";
 import LocationIcon from "../../assets/icons/Property/marker.png";
 import iconnect from "../../assets/icons/Property/iconnect.png";
 import Watsapp from "../../assets/icons/Property/watsapp.png";
 import enquire from "../../assets/icons/Property/enquire.png";
 import schedulevisit from "../../assets/icons/Property/schedulevisit.png";
 import call from "../../assets/icons/Property/call.png";
+import Sidenav from "../Sidenav/Sidenav";
+import EnquireFormModal from "../EnquireFormModal";
+import ScheduleVisitFormModal from "../ScheduleVisitFormModal";
+import PropertyExchangeTable from "../Index/PropertyExchangeTable";
 
 
 const PropertyList = () => {
@@ -30,6 +34,8 @@ const [Amenities, setAmenities] = useState([]);
 const [priceRange, setPriceRange] = useState([1000000, 200000000]);
 const [sortedProperties, setSortedProperties] = useState([]);
 const [filteredProperties, setFilteredProperties] = useState([]);
+ const [isEnquireModalOpen,setIsEnquireModalOpen] = useState(false);
+  const [isScheduleModalOpen,setIsScheduleModalOpen] = useState(false)
 
 const [selectedFilters, setSelectedFilters] = useState({
   cities: [],
@@ -210,8 +216,9 @@ const handleSort = (type) => {
 
 
 return (
-<div className="grid grid-cols-12 gap-4">
-   <div className="col-span-2 pl-2.5">
+  <>
+<div className="flex grid-cols-12 gap-4">
+   <div className="basis-1/5 pr-2 pl-2.5">
       <div className="mt-20 p-2 border">
        <Link
   onClick={clearAllFilters}
@@ -303,16 +310,15 @@ return (
 
       </div>
    </div>
-   <div className="col-span-10 mt-20 mb-10">
+   <div className="basis-4/5 mt-20 mb-10 relative">
     <select
   onChange={(e) => handleSort(e.target.value)}
-  className="p-2 border rounded-md shadow-sm"
->
+  className="p-2 my-2 mx-4 border rounded-md shadow-sm  float-right">
   <option value="">Sort By</option>
   <option value="lowToHigh">Price: Low to High</option>
   <option value="highToLow">Price: High to Low</option>
 </select>
-<div className="grid grid-cols-3 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 mb-10">
+<div className="grid grid-cols-3 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 mb-10 clear-both">
         {filteredProperties.map((item, index) => (
           <div key={index} className="px-3 py-2">
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition">
@@ -357,15 +363,15 @@ return (
               </div>
               <div className="card-icons flex ">
                     <div className="card-icon h-11 place-items-center place-content-center">
-                      <img src={iconnect} className="" />
+                      <img  src={iconnect} className="" alt="Iconnect" />
                     </div>
-                     <div className="card-icon  h-11 place-items-center place-content-center">
+                     <div className="card-icon  h-11 place-items-center place-content-center" onClick={()=>setIsEnquireModalOpen(true)}>
                       <img src={enquire} className="" />
                     </div>
                     <div className="card-icon  h-11 place-items-center place-content-center">
-                      <img src={Watsapp} className="" />
+                      <a href='https://api.whatsapp.com/send/?phone=918185800800&text=Hi+PropEx%21+I%27m+looking+for+a+property&type=phone_number&app_absent=0' target='_blank'><img src={Watsapp} className="" /></a>
                     </div>
-                    <div className="card-icon  h-11 place-items-center place-content-center">
+                    <div className="card-icon  h-11 place-items-center place-content-center" onClick={()=>setIsScheduleModalOpen(true)}>
                       <img src={schedulevisit} className="" />
                     </div>
                     <div className="card-icon  h-11 place-items-center place-content-center">
@@ -377,7 +383,12 @@ return (
         ))}
         </div>
 </div>
+<Sidenav />
+ <EnquireFormModal isOpen={isEnquireModalOpen} onClose={() => setIsEnquireModalOpen(false)} leadSource="" LPId={78} mobNumValidate={false} otpVerify={false}/>
+    <ScheduleVisitFormModal isOpen={isScheduleModalOpen} onClose={() => setIsScheduleModalOpen(false)} leadSource="" LPId={78} mobNumValidate={false} otpVerify={false}/>
 </div>
+<PropertyExchangeTable />
+</>
 );
 }
 export default PropertyList

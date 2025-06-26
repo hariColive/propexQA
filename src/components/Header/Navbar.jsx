@@ -41,7 +41,7 @@ const Navbar = () => {
       {/*Right Buttons*/}
       <div className='navicons flex items-center justify-end gap-6'>
         <div className='usericon'>
-            <a href="/"><img src={UserIcon} width={30} alt="User" /></a>
+            <a href="/Login"><img src={UserIcon} width={30} alt="User" /></a>
         </div>
         <div className='usericon'>
         <a href="/"><img src={CallIcon} width={30} alt="Call" /></a>

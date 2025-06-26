@@ -2,7 +2,6 @@ import React from 'react'
 import { FaFacebook, FaLinkedin, FaInstagramSquare, FaYoutube  } from "react-icons/fa";
 import {sections} from '../../data/footer';
 import {items} from '../../data/footer';
-import Sidenav from '../Sidenav/Sidenav';
 
 const Footer = () => {
   return (
@@ -66,7 +65,6 @@ const Footer = () => {
           </div>
 
         </div>
-        <Sidenav/>
     </>
   )
 }

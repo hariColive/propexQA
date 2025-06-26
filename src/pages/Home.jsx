@@ -8,17 +8,17 @@ import PrpexPresence from '../components/Index/PrpexPresence'
 import Onepalce from '../components/Index/Onepalce'
 import YesBroker from '../components/Index/YesBroker'
 import PropertyExchange from '../components/Index/PropertyExchange'
+import PropertyExchangeTable from '../components/Index/PropertyExchangeTable'
 import MobileApps from '../components/Index/MobileApps'
 import Partners from '../components/Index/Partners'
 import FAQSection from '../components/Index/FAQSection'
-import PropertyExchangeTable from '../components/Index/PropertyExchangeTable'
 
 const Home = () => {
   return (
     <div>
       <Herosection />
       <br /><br /><br/><br/>
-      <PropertyExchangeTable/>
+      <PropertyExchangeTable />
       <PropGPT />
       <IProcess />
       <PropEstimate />

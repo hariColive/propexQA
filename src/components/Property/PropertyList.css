@@ -1,0 +1,35 @@
+.card-icon{
+    width:20%;
+    border: 1px solid #f9eded;
+    cursor: pointer;
+}
+
+.slick-prev{
+left: 0px!important;
+width: 40px!important;
+height: 40px!important;
+border-radius: 0% 5px 5px 0!important;
+background: #ffffff9e !important;
+}
+.slick-next {
+    right: 0px!important;
+    width: 40px!important;
+    height: 40px!important;
+    border-radius: 5px 0 0 5px!important;
+    background: #ffffff9e !important;
+}
+.slick-slider .slick-prev:before {
+    color: #ef0073 !important;
+    font-size: 20px;
+}
+.slick-slider .slick-next:before {
+    color: #ef0073 !important;
+    font-size: 20px;
+}
+.body-container {
+    width: calc(100% - 70px)!important;
+    margin: 0 auto;
+}
+.table-title, .table-tabs{
+    display: none !important;
+}

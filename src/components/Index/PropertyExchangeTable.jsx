@@ -100,12 +100,12 @@ const PropertyExchangeTable = () => {
         <div className="pb-14">
             <div className="body-container">
                 <div className="title text-center py-8">
-                    <h2 className="text-3xl font-bold">
+                    <h2 className="text-3xl font-bold table-title">
                         <span className="text-[#ef1284]">India’s First</span> Property Exchange
                     </h2>
 
                     {/* Parent Tabs */}
-                    <div className="flex justify-center my-6 w-[300px] m-auto border-[#A4A4A4] rounded-[6px]">
+                    <div className="flex justify-center my-6 w-[300px] m-auto border-[#A4A4A4] rounded-[6px] table-tabs">
                         {tabs.map((tab, index) => (
                             <button
                                 key={index}
