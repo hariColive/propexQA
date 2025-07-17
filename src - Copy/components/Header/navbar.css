@@ -1,0 +1,24 @@
+.Logo img {
+    width: 200px;
+}
+.head-container{
+    width: calc(100% - 100px);
+    margin: 0 auto;
+  }
+  .md-hidden{
+    display: none;
+  }
+@media (max-width: 768px) {
+    .Logo img {
+        width: 150px;
+    }
+    .navitems
+    { display: none; }
+    .head-container{
+        width: calc(100% - 30px);
+        margin: 0 auto;
+      }
+      .md-hidden{
+        display: flex;
+      }
+  }

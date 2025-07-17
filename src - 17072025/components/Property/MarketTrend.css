@@ -1,0 +1,30 @@
+.market-trend-header {
+  display: flex;
+  align-items: center;
+  margin: 40px 0 20px 0;
+}
+
+.market-trend-line {
+  flex: 1;
+  height: 1px;
+  background-color: #222;
+  opacity: 0.3;
+}
+
+.market-trend-title {
+  margin: 0 32px;
+  font-weight: bold;
+  font-size: 2rem;
+  color: #222;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .market-trend-header {
+    margin: 24px 0 12px 0;
+  }
+  .market-trend-title {
+    font-size: 1.1rem;
+    margin: 0 10px;
+  }
+} 

@@ -1,0 +1,15 @@
+.Herowrap h2{
+font-size: 35px;
+}
+.section3iProcess{
+    margin-top: 100px;
+    background: rgba(124, 124, 124, 0.1);
+}
+.slick-slider .slick-prev:before{
+    color: #000;
+    font-size: 26px;
+}
+.slick-slider .slick-next:before{
+    color: #000;
+    font-size: 26px;
+}
