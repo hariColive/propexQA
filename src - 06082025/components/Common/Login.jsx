@@ -36,7 +36,7 @@ const Login = () => {
 
       // Step 2: Send OTP for existing user
       const otpRes = await axios.post(
-        "https://api.propex.ai/web/qa/api/crm/otp",
+        "https://api.propex.ai/web/live/api/crm/otp",
         {
           Mobile: values.phone,
           TypeId: 1,

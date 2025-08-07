@@ -28,7 +28,7 @@
     "react-toastify": "^11.0.5",
     "react-tooltip": "^4.2.21",
     "slick-carousel": "^1.8.1",
-    "sweetalert2": "^11.22.1",
+    "sweetalert2": "^11.22.2",
     "swiper": "^11.2.2",
     "yup": "^1.6.1"
   },
